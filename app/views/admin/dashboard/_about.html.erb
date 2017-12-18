@@ -1,1 +1,26 @@
-h1 "Test"
+<div>
+    <table border="0" cellspacing="0" cellpadding="0" id="index_table_admin_users" class="" paginator="true">
+        <thead>
+            <tr>
+            <th class="col col-id">option</th>
+            <th class="col col-email">settings</th>
+            <th class="col col-actions"><%= key %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% About.all.each do |about| %>
+                <tr class="<%= cycle('even', 'odd') -%>">
+                    <td class="col col-email"><%= about.option %></td>
+                    <td class="col col-email"><%= about.settings %></td>
+                    <td class="col col-actions">
+                        <div class="table_actions">
+                            <a class="view_link member_link" title="View" href="/admin/admin_users/2">View</a>
+                            <a class="edit_link member_link" title="Edit" href="/admin/admin_users/2/edit">Edit</a>
+                            <a class="delete_link member_link" title="Delete" data-confirm="Are you sure you want to delete this?" rel="nofollow" data-method="delete" href="/admin/admin_users/2">Delete</a>                              
+                        </div>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
