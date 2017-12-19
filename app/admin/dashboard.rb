@@ -3,7 +3,14 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   page_action :lock, method: :post do
-    @about = About.first
+    
+    @about = []
+    @about << {text: "First", checked: true}
+    @about << {text: "Second", checked: true}
+    @about << {text: "Third", checked: false}
+    @about << {text: "Fourth", checked: true}
+    @about << {text: "Fifth", checked: false}
+    
     respond_to do |format|
       # if the response fomat is html, redirect as usual
       format.html { redirect_to root_path }

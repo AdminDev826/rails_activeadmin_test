@@ -1,64 +1,28 @@
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <h5 class="modal-title">Modal title <%= id %></h5>
+      <h5 class="modal-title">Modal title</h5>
     </div>
     <div class="modal-body">
       <h3>Tab fields</h3>
       <div class="modal-listview">
         <ul class="list-group shown-fields">
-          <li class="list-group-item">
-            <label>Cras justo odio</label>
-             <span class="pull-right">
-              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
-                Hide
-              </span>
-            </span> 
-          </li>
-          <li class="list-group-item">
-            <label>Dapibus ac facilisis in</label>
-            <span class="pull-right">
-              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
-                Hide
-              </span>
-            </span> 
-          </li>
-          <li class="list-group-item">
-            <label>Morbi leo risus</label>
-            <span class="pull-right">
-              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
-                Hide
-              </span>
-            </span> 
-          </li>
-          <li class="list-group-item">
-            <label>Porta ac consectetur ac</label>
-            <span class="pull-right">
-              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
-                Hide
-              </span>
-            </span> 
-          </li>
-          <li class="list-group-item">
-            <label>Vestibulum at eros</label>
-            <span class="pull-right">
-              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
-                Hide
-              </span>
-            </span> 
-          </li>
+          <% data.each do |item| %>
+            <li class="list-group-item">
+              <label><%= item[:text] %></label>
+              <span class="pull-right">
+                <input class="toggle-event" type="checkbox" data-toggle="toggle" <%= "checked" if item[:checked] %> data-size="mini">
+              </span> 
+            </li>
+          <% end %>
         </ul>
       </div>
       <hr />
-      <h3>Hidden fields</h3>
-      <div class="modal-listview">
-        <ul class="list-group hidden-fields">
-          
-        </ul>
-      </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -69,22 +33,15 @@
 
 <script>
   var hidden_fields = [];
-  function hideItem(item){
-    var parentItem = $(item).parent().parent();
+  $('.toggle-event').change(function() {
+    var checked = $(this).prop('checked');
+    var parentItem = $(this).parent().parent().parent();
     var itemText = parentItem.children("label").text();
-    hidden_fields.push(itemText);
-    var listItem = "<li class='list-group-item'><label>"+ itemText +"</label><span class='pull-right'><span class='btn btn-xs btn-default' onclick='showItem(this)'>Show</span></span></li>"
-    $('.hidden-fields').append(listItem);
-    parentItem.remove();
+    if(checked) {
+      hidden_fields.push(itemText);
+    }else {
+      hidden_fields.pop(itemText);
+    }
     console.log(hidden_fields);
-  }
-  function showItem(item){
-    var parentItem = $(item).parent().parent();
-    var itemText = parentItem.children("label").text();
-    hidden_fields.pop(itemText);
-    var listItem = "<li class='list-group-item'><label>"+ itemText +"</label><span class='pull-right'><span class='btn btn-xs btn-default' onclick='hideItem(this)'>Hide</span></span></li>"
-    $('.shown-fields').append(listItem);
-    parentItem.remove();
-    console.log(hidden_fields);
-  }
+  })
 </script>
