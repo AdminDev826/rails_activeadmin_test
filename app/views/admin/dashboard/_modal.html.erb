@@ -1,0 +1,90 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h5 class="modal-title">Modal title <%= id %></h5>
+    </div>
+    <div class="modal-body">
+      <h3>Tab fields</h3>
+      <div class="modal-listview">
+        <ul class="list-group shown-fields">
+          <li class="list-group-item">
+            <label>Cras justo odio</label>
+             <span class="pull-right">
+              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
+                Hide
+              </span>
+            </span> 
+          </li>
+          <li class="list-group-item">
+            <label>Dapibus ac facilisis in</label>
+            <span class="pull-right">
+              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
+                Hide
+              </span>
+            </span> 
+          </li>
+          <li class="list-group-item">
+            <label>Morbi leo risus</label>
+            <span class="pull-right">
+              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
+                Hide
+              </span>
+            </span> 
+          </li>
+          <li class="list-group-item">
+            <label>Porta ac consectetur ac</label>
+            <span class="pull-right">
+              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
+                Hide
+              </span>
+            </span> 
+          </li>
+          <li class="list-group-item">
+            <label>Vestibulum at eros</label>
+            <span class="pull-right">
+              <span class="btn btn-xs btn-default" onclick="hideItem(this)">
+                Hide
+              </span>
+            </span> 
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <h3>Hidden fields</h3>
+      <div class="modal-listview">
+        <ul class="list-group hidden-fields">
+          
+        </ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var hidden_fields = [];
+  function hideItem(item){
+    var parentItem = $(item).parent().parent();
+    var itemText = parentItem.children("label").text();
+    hidden_fields.push(itemText);
+    var listItem = "<li class='list-group-item'><label>"+ itemText +"</label><span class='pull-right'><span class='btn btn-xs btn-default' onclick='showItem(this)'>Show</span></span></li>"
+    $('.hidden-fields').append(listItem);
+    parentItem.remove();
+    console.log(hidden_fields);
+  }
+  function showItem(item){
+    var parentItem = $(item).parent().parent();
+    var itemText = parentItem.children("label").text();
+    hidden_fields.pop(itemText);
+    var listItem = "<li class='list-group-item'><label>"+ itemText +"</label><span class='pull-right'><span class='btn btn-xs btn-default' onclick='hideItem(this)'>Hide</span></span></li>"
+    $('.shown-fields').append(listItem);
+    parentItem.remove();
+    console.log(hidden_fields);
+  }
+</script>

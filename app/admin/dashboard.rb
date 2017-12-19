@@ -2,7 +2,16 @@ ActiveAdmin.register_page "Dashboard" do
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
-  # scope :all, :default => true
+  page_action :lock, method: :post do
+    @about = About.first
+    respond_to do |format|
+      # if the response fomat is html, redirect as usual
+      format.html { redirect_to root_path }
+  
+      # if the response format is javascript, do something else...
+      format.js { }
+    end
+  end
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
     key = params[:title].present? ? params[:title] : "about"

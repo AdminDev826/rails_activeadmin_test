@@ -21,3 +21,13 @@
         cursor: pointer;
     }
 }
+
+.modal-dialog {
+    .modal-listview {
+        height: 200px;
+        overflow: auto;
+        li:hover {
+            background-color: lightgray;
+        }
+    }
+}
