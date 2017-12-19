@@ -15,6 +15,7 @@
           <% data.each do |item| %>
             <li class="list-group-item">
               <label><%= item[:text] %></label>
+              <input type="hidden" class="about_id" value="<%= item[:text] %>">
               <span class="pull-right">
                 <input class="toggle-event" type="checkbox" data-toggle="toggle" <%= "checked" if item[:checked] %> data-size="mini">
               </span> 
@@ -32,16 +33,34 @@
 </div>
 
 <script>
-  var hidden_fields = [];
   $('.toggle-event').change(function() {
+    var settingText = "YES";
     var checked = $(this).prop('checked');
     var parentItem = $(this).parent().parent().parent();
     var itemText = parentItem.children("label").text();
+    var id = parentItem.children('.about_id').val();
     if(checked) {
-      hidden_fields.push(itemText);
+      settingText = "YES";
     }else {
-      hidden_fields.pop(itemText);
+      settingText = "NO";
     }
-    console.log(hidden_fields);
-  })
+    updateData(id, itemText, settingText);
+  });
+  function updateData(id, itemText, settingText){
+    $.ajax({
+      method: "POST",
+      url: "/admin/dashboard/updateAbout",
+      data: ({ about_id: id, option: itemText, settings: settingText }),
+      dataType: 'script',
+      success: function(data) {
+        console.log(data);
+        if(!data) {
+          console.log("error !");
+        }  
+      },
+      error: function(){
+        alert('Error occured!');
+      }
+    });
+  }
 </script>

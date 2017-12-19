@@ -3,20 +3,27 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   page_action :lock, method: :post do
-    
     @about = []
     @about << {text: "First", checked: true}
     @about << {text: "Second", checked: true}
     @about << {text: "Third", checked: false}
     @about << {text: "Fourth", checked: true}
     @about << {text: "Fifth", checked: false}
-    
     respond_to do |format|
       # if the response fomat is html, redirect as usual
       format.html { redirect_to root_path }
   
       # if the response format is javascript, do something else...
       format.js { }
+    end
+  end
+
+  page_action :updateAbout, method: :post do
+    @about = About.find_by(id: params[:about_id])
+    if @about.update_attributes(option: params[:option], settings: params[:settings])
+      render json: 'true'
+    else
+      render json: 'false'
     end
   end
 
