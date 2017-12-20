@@ -1,8 +1,13 @@
 ActiveAdmin.register_page "Dashboard" do
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  items = {
+    a: %w(a b c d e f g),
+    b:%w(a b c d e f g) 
+  }
 
   page_action :lock, method: :post do
+    p items["a".to_sym]
     @about = []
     @about << {text: "First", checked: true}
     @about << {text: "Second", checked: true}

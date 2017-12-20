@@ -34,17 +34,20 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('.tr-modal').click(function(){
-            
-            var id = $(this).find('.col-option').html();
-            $.ajax({
-                method: "POST",
-                url: "/admin/dashboard/lock",
-                data: jQuery.param({ id: id }),
-                dataType: 'script'
-            });
-
-        })
-    });
+    var id = '';
+    var selectedItem = null;
+    $('.tr-modal').click(function(){
+        selectedItem = $(this);
+        id = selectedItem.find('.col-option').html();
+        $.ajax({
+            method: "POST",
+            url: "/admin/dashboard/lock",
+            data: jQuery.param({ id: id }),
+            dataType: 'script'
+        });
+    })
+    $('#exampleModal').on('hidden.bs.modal', function(){
+        console.log(selectedItem.find('.col-email').html());
+        selectedItem.find('.col-email').html("-YES");
+    })
 </script>
