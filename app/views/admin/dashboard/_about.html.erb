@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <div>
     <label class="zoom-normal" data-toggle="modal" data-target="#chart_modal">Show Modal</label>
     <table border="0" cellspacing="0" cellpadding="0" id="tbl_about" class="" paginator="true">
@@ -47,7 +44,7 @@
         });
     })
     $('#exampleModal').on('hidden.bs.modal', function(){
-        $('.modal-dialog').remove();
+        $(this).empty();
         $.ajax({
             method: "POST",
             url: "/admin/dashboard/lock",
@@ -63,4 +60,7 @@
             }
         });
     })
+    $('.toggle-event').bind('change', function() {
+        alert("YES");
+    });
 </script>
