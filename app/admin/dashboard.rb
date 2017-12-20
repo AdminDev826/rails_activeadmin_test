@@ -1,25 +1,22 @@
 ActiveAdmin.register_page "Dashboard" do
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
-  items = {
-    a: %w(a b c d e f g),
-    b:%w(a b c d e f g) 
-  }
 
   page_action :lock, method: :post do
-    p items["a".to_sym]
     @about = []
     @about << {text: "First", checked: true}
     @about << {text: "Second", checked: true}
     @about << {text: "Third", checked: false}
     @about << {text: "Fourth", checked: true}
     @about << {text: "Fifth", checked: false}
-    respond_to do |format|
-      # if the response fomat is html, redirect as usual
-      format.html { redirect_to root_path }
-  
-      # if the response format is javascript, do something else...
-      format.js { }
+    if params[:key] == "js"
+      returnValue = ["Account Classes", "Ach Transmittals"]
+      render json: returnValue
+    else
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js { }
+      end
     end
   end
 

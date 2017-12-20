@@ -28,7 +28,7 @@
         </tbody>
     </table>
 </div>
-<%= link_to "Test", admin_dashboard_lock_path, method: :post, remote: true %>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
   
 </div>
@@ -47,7 +47,20 @@
         });
     })
     $('#exampleModal').on('hidden.bs.modal', function(){
-        console.log(selectedItem.find('.col-email').html());
-        selectedItem.find('.col-email').html("-YES");
+        $('.modal-dialog').remove();
+        $.ajax({
+            method: "POST",
+            url: "/admin/dashboard/lock",
+            data: jQuery.param({ id: id, key: "js" }),
+            dataType: "json",
+            timeout: 10000,
+            success: function(data,status,xhr) {
+                console.log(data);
+                selectedItem.find('.col-email').html(JSON.stringify(data));
+            },
+            error: function( jqXHR, textStatus, errorThrown ) {
+                console.log( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+            }
+        });
     })
 </script>

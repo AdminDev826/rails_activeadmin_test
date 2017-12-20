@@ -30,37 +30,36 @@
       <button type="button" class="btn btn-primary">Save changes</button>
     </div>
   </div>
-</div>
-
-<script>
-  $('.toggle-event').change(function() {
-    var settingText = "YES";
-    var checked = $(this).prop('checked');
-    var parentItem = $(this).parent().parent().parent();
-    var itemText = parentItem.children("label").text();
-    var id = parentItem.children('.about_id').val();
-    if(checked) {
-      settingText = "YES";
-    }else {
-      settingText = "NO";
-    }
-    updateData(id, itemText, settingText);
-  });
-  function updateData(id, itemText, settingText){
-    $.ajax({
-      method: "POST",
-      url: "/admin/dashboard/updateAbout",
-      data: ({ about_id: id, option: itemText, settings: settingText }),
-      dataType: 'script',
-      success: function(data) {
-        console.log(data);
-        if(!data) {
-          console.log("error !");
-        }  
-      },
-      error: function(){
-        alert('Error occured!');
+  <script>
+    $('.toggle-event').change(function() {
+      var settingText = "YES";
+      var checked = $(this).prop('checked');
+      var parentItem = $(this).parent().parent().parent();
+      var itemText = parentItem.children("label").text();
+      var id = parentItem.children('.about_id').val();
+      if(checked) {
+        settingText = "YES";
+      }else {
+        settingText = "NO";
       }
+      updateData(id, itemText, settingText);
     });
-  }
-</script>
+    function updateData(id, itemText, settingText){
+      $.ajax({
+        method: "POST",
+        url: "/admin/dashboard/updateAbout",
+        data: ({ about_id: id, option: itemText, settings: settingText }),
+        dataType: 'script',
+        success: function(data) {
+          console.log(data);
+          if(!data) {
+            console.log("error !");
+          }  
+        },
+        error: function(){
+          alert('Error occured!');
+        }
+      });
+    }
+  </script>
+</div>
