@@ -7,23 +7,26 @@
 @import "switch";
 
 
-#tbl_about {
-    tbody tr {
-        cursor: pointer;
-        &:hover {
-            td {
-                background-color: #bdecb0;
-            }
-        }
-    }
+.width-50 {
+  width: 50%;
 }
-
-.modal-dialog {
-    .modal-listview {
-        height: 200px;
-        overflow: auto;
-        li:hover {
-            background-color: lightgray;
-        }
+.margin-right-30 {
+  margin-right: 30px !important;
+}
+#tbl_about {
+  tbody tr {
+    cursor: pointer;
+    &:hover {
+      td {
+        background-color: #bdecb0;
+      }
     }
+  }
+}
+.modal-listview {
+  height: 200px;
+  overflow: auto;
+  li:hover {
+    background-color: lightgray;
+  }
 }

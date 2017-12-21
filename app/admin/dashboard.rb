@@ -2,17 +2,20 @@ ActiveAdmin.register_page "Dashboard" do
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
+  users = About.all
+  static_data = []
+  static_data << {text: "First", checked: true}
+  static_data << {text: "Second", checked: true}
+  static_data << {text: "Third", checked: false}
+  static_data << {text: "Fourth", checked: true}
+  static_data << {text: "Fifth", checked: false}
+
   page_action :lock, method: :post do
-    @about = []
-    @about << {text: "First", checked: true}
-    @about << {text: "Second", checked: true}
-    @about << {text: "Third", checked: false}
-    @about << {text: "Fourth", checked: true}
-    @about << {text: "Fifth", checked: false}
     if params[:key] == "js"
       returnValue = ["Account Classes", "Ach Transmittals"]
       render json: returnValue
     else
+      @returnValue = static_data
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js { }
@@ -55,7 +58,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel key do
-          render key, key: key
+          render key, {key: key, data: static_data, users: users}
         end
       end
     end

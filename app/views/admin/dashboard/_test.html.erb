@@ -1,1 +1,43 @@
-This is test! <%= key %>
+<div class="columns">
+  <div class="column width-30">
+    <p>Select Data:</p>
+    <div class="modal-listview">
+      <ul class="list-group test-data-list">
+        <% data.each do |item| %>
+        <li class="list-group-item">
+          <label class="data-id"><%= item[:text] %></label>
+          <input type="hidden" class="about_id" value="<%= item[:text] %>">
+          <span class="pull-right">
+            <label class="switch">
+              <input type="checkbox" class="switch-input" checked>
+              <span class="switch-label" data-on="On" data-off="Off"></span>
+              <span class="switch-handle"></span>
+            </label>
+            <!-- <input class="toggle-event" type="checkbox" data-toggle="toggle" <%= "checked" if item[:checked] %> data-size="mini"> -->
+          </span> 
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="column width-70">
+    <p>Edit user settings:</p>
+    <div class="modal-listview">
+      <ul class="list-group shown-fields">
+        <% data.each do |item| %>
+        <li class="list-group-item">
+          <label class="col-id"><%= item[:text] %></label>
+          <label><%= item[:text] %></label>
+          <label class="margin-right-30"><%= item[:text] %></label>
+          <input type="hidden" class="about_id" value="<%= item[:text] %>">
+          <span class="pull-right">
+            <button type="button" class="btn btn-info btn-sm btn-model-setting">Model Settings</button>
+            <button type="button" class="btn btn-info btn-sm btn-field-order">Field Order</button>
+          </span> 
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div><%= users %></div>

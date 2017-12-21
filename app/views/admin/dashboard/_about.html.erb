@@ -1,66 +1,35 @@
 <div>
-    <label class="zoom-normal" data-toggle="modal" data-target="#chart_modal">Show Modal</label>
-    <table border="0" cellspacing="0" cellpadding="0" id="tbl_about" class="" paginator="true">
-        <thead>
-            <tr>
-            <th class="col col-id">option</th>
-            <th class="col col-email">settings</th>
-            <th class="col col-actions"><%= key %></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% About.all.each do |about| %>
-                <tr class="<%= cycle('even', 'odd') -%> tr-modal" data-toggle="modal" data-target="#exampleModal">
-                    <td class="col col-option"><%= about.option %></td>
-                    <td class="col col-email"><%= about.settings %></td>
-                    <td class="col col-actions">
-                        <div class="table_actions">
-                            <a class="view_link member_link" title="View" href="/admin/admin_users/2">View</a>
-                            <a class="edit_link member_link" title="Edit" href="/admin/admin_users/2/edit">Edit</a>
-                            <a class="delete_link member_link" title="Delete" data-confirm="Are you sure you want to delete this?" rel="nofollow" data-method="delete" href="/admin/admin_users/2">Delete</a>                              
-                        </div>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+  <label class="zoom-normal" data-toggle="modal" data-target="#chart_modal">Show Modal</label>
+  <table border="0" cellspacing="0" cellpadding="0" id="tbl_about" class="" paginator="true">
+    <thead>
+      <tr>
+        <th class="col col-id">option</th>
+        <th class="col col-email">settings</th>
+        <th class="col col-actions"><%= key %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% About.all.each do |about| %>
+      <tr class="<%= cycle('even', 'odd') -%> tab-setting-row" data-toggle="modal" data-target="#exampleModal">
+        <td class="col col-option"><%= about.option %></td>
+        <td class="col col-email"><%= about.settings %></td>
+        <td class="col col-actions">
+          <div class="table_actions">
+            <a class="view_link member_link" title="View" href="/admin/admin_users/2">View</a>
+            <a class="edit_link member_link" title="Edit" href="/admin/admin_users/2/edit">Edit</a>
+            <a class="delete_link member_link" title="Delete" data-confirm="Are you sure you want to delete this?" rel="nofollow" data-method="delete" href="/admin/admin_users/2">Delete</a>                              
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <%= data %>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-  
-</div>
 
-<script type="text/javascript">
-    var id = '';
-    var selectedItem = null;
-    $('.tr-modal').click(function(){
-        selectedItem = $(this);
-        id = selectedItem.find('.col-option').html();
-        $.ajax({
-            method: "POST",
-            url: "/admin/dashboard/lock",
-            data: jQuery.param({ id: id }),
-            dataType: 'script'
-        });
-    })
-    $('#exampleModal').on('hidden.bs.modal', function(){
-        $(this).empty();
-        $.ajax({
-            method: "POST",
-            url: "/admin/dashboard/lock",
-            data: jQuery.param({ id: id, key: "js" }),
-            dataType: "json",
-            timeout: 10000,
-            success: function(data,status,xhr) {
-                console.log(data);
-                selectedItem.find('.col-email').html(JSON.stringify(data));
-            },
-            error: function( jqXHR, textStatus, errorThrown ) {
-                console.log( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
-            }
-        });
-    })
-    $('.toggle-event').bind('change', function() {
-        alert("YES");
-    });
-</script>
+</div>
