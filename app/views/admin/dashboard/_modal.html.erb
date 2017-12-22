@@ -1,38 +1,34 @@
-<!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <h5 class="modal-title">Modal title</h5>
+      <h5 class="modal-title">Tab Setting (Show/Hide)</h5>
     </div>
     <div class="modal-body">
-      <h3>Tab fields</h3>
       <div class="modal-listview">
         <ul class="list-group shown-fields">
-          <% data.each do |item| %>
+          <% data.value.each do |tabValue| %>
+            <% if data.hidden_fields.present? %>
+              <% hidden = true if data.hidden_fields.include? tabValue %>
+            <% else %>
+              <% hidden = false %>
+            <% end %>
             <li class="list-group-item">
-              <label><%= item[:text] %></label>
-              <input type="hidden" class="about_id" value="<%= item[:text] %>">
+              <label><%= tabValue %></label>
+              <input type="hidden" class="object-id" value="<%= data.id %>">
               <span class="pull-right">
                 <label class="switch">
-                  <input type="checkbox" class="switch-input" checked>
+                  <input type="checkbox" class="switch-input" <%= "checked" if !hidden %>>
                   <span class="switch-label" data-on="On" data-off="Off"></span>
                   <span class="switch-handle"></span>
                 </label>
-                <!-- <input class="toggle-event" type="checkbox" data-toggle="toggle" <%= "checked" if item[:checked] %> data-size="mini"> -->
               </span> 
             </li>
           <% end %>
         </ul>
       </div>
-      <hr />
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
     </div>
   </div>
 </div>

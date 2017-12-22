@@ -15,7 +15,10 @@ ActiveAdmin.register_page "Dashboard" do
       returnValue = ["Account Classes", "Ach Transmittals"]
       render json: returnValue
     else
-      @returnValue = static_data
+      # @returnValue = static_data
+      object_fields = About.column_names
+      ReturnObject = Struct.new(:id, :value, :hidden_fields)
+      @returnValue = ReturnObject.new('', object_fields, ["sd", "dsdf", "dss"])
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js { }
