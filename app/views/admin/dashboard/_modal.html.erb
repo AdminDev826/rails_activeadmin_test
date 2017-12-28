@@ -8,7 +8,7 @@
     </div>
     <div class="modal-body">
       <div class="modal-listview">
-        <ul class="list-group shown-fields">
+        <ul class="list-group shown-fields" id="d_list">
           <% data.value.each do |tabValue| %>
             <% if data.hidden_fields.present? %>
               <% hidden = true if data.hidden_fields.include? tabValue %>

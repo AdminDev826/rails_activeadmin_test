@@ -67,17 +67,31 @@ $(document).ready ->
 		alert data_id + '--' + user_id
 		getDatawithFormat '/admin/dashboard/lock', data_id, user_id, 'script', "key", ''
 		return
-	return
 
-$(document).on 'change', '#exampleModal .switch-input', (event) ->
-  settingText = 'YES'
-  checked = $(this).prop('checked')
-  parentItem = $(this).parent().parent().parent()
-  itemText = parentItem.children('label').text()
-  item_id = parentItem.children('.about_id').val()
-  if checked
-    settingText = 'YES'
-  else
-    settingText = 'NO'
- 	updateAttribute '/admin/dashboard/updateAbout', item_id, itemText, settingText
-  return
+	$('#exampleModal').on 'show.bs.modal', ->
+		setTimeout (->
+		  $('#d_list').sortable().bind 'sortupdate', (e, ui) ->
+		  	sorted_array = []
+		  	$('li', $(this)).each (index, e) ->
+		  		label = $(e).children('label').text()
+		  		sorted_array.push label
+		  		return
+		  	console.log(sorted_array)
+		  	return
+		), 300
+		return
+
+	$(document).on 'change', '#exampleModal .switch-input', (event) ->
+	  settingText = 'YES'
+	  checked = $(this).prop('checked')
+	  parentItem = $(this).parent().parent().parent()
+	  itemText = parentItem.children('label').text()
+	  item_id = parentItem.children('.about_id').val()
+	  if checked
+	    settingText = 'YES'
+	  else
+	    settingText = 'NO'
+	 	updateAttribute '/admin/dashboard/updateAbout', item_id, itemText, settingText
+	  return
+
+	return
