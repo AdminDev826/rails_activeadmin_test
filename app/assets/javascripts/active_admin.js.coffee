@@ -1,6 +1,7 @@
 #= require active_admin/base
 #= require bootstrap-sprockets
 #= require bootstrap-toggle
+#= require jstree
 
 getDatawithFormat = (url, object_id, user_id, dataType, key, objectItem) -> 
 	$.ajax

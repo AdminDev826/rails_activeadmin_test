@@ -10,6 +10,35 @@ ActiveAdmin.register_page "Dashboard" do
   static_data << {text: "Fourth", checked: true}
   static_data << {text: "Fifth", checked: false}
 
+
+  page_action :getTreeData, method: :get do
+
+    default_tabs = {
+      aa: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
+      bb: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
+      cc: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
+      dd: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
+      ee: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
+      ff: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"]
+    }
+
+    return_data = []
+    if params[:item_id].present?
+      default_tabs[params[:item_id].to_sym].each do |item|
+        model_key = params[:item_id].humanize.parameterize + '.' + item.singularize.parameterize 
+        tree_data = {text: item + "<button>sdf</button>", children: false, pid: model_key}
+        return_data << tree_data
+      end
+    else
+      default_tabs.each do |key, data|
+        tree_data = { text: key.to_s.humanize, children: true, item_id: key }
+        return_data << tree_data
+      end
+    end
+    render json: return_data
+
+  end
+
   page_action :lock, method: :post do
     if params[:key] == "js"
       returnValue = ["Account Classes", "Ach Transmittals"]

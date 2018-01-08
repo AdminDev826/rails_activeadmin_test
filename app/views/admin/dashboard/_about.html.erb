@@ -1,34 +1,56 @@
-<div>
-  <label class="zoom-normal" data-toggle="modal" data-target="#chart_modal">Show Modal</label>
-  <table border="0" cellspacing="0" cellpadding="0" id="tbl_about" class="" paginator="true">
-    <thead>
-      <tr>
-        <th class="col col-id d-none">option</th>
-        <th class="col col-email">settings</th>
-        <th class="col col-actions"><%= key %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% About.all.each do |about| %>
-      <tr class="<%= cycle('even', 'odd') -%> tab-setting-row" data-toggle="modal" data-target="#exampleModal">
-        <td class="col col-option"><%= about.option %></td>
-        <td class="col col-email"><%= about.settings %></td>
-        <td class="col col-actions">
-          <div class="table_actions">
-            <a class="view_link member_link" title="View" href="/admin/admin_users/2">View</a>
-            <a class="edit_link member_link" title="Edit" href="/admin/admin_users/2/edit">Edit</a>
-            <a class="delete_link member_link" title="Delete" data-confirm="Are you sure you want to delete this?" rel="nofollow" data-method="delete" href="/admin/admin_users/2">Delete</a>                              
-          </div>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<div>
-  <%= data %>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jsTree test</title>
+  <!-- 2 load the theme CSS file -->
+  
+</head>
+<body>
+  <!-- 3 setup a container element -->
+  <div id="jstree">
+    <!-- in this example the tree is populated from inline HTML -->
+    <ul>
+      <li>Root node 1
+        <ul>
+          <li id="child_node_1">Child node 1</li>
+          <li>Child node 2</li>
+        </ul>
+      </li>
+      <li>Root node 2</li>
+    </ul>
+  </div>
+  <button>demo button</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <script>
+  $(function () {
+    // 6 create an instance when the DOM is ready
+    // $('#jstree').jstree();
+    // $('#jstree').jstree({
+    //   'core' : {
+    //     'data' : function (obj, cb) {
+    //         cb.call(this,
+    //           ['Root 1', 'Root 2']);
+    //     }
+    //   }
+    // });
 
-</div>
+    $('#jstree').jstree({
+      'core' : {
+        'data' : {
+          'url' : function (node) {
+            var item_id = node.original == null ? '' : node.original.item_id;
+            return '/admin/dashboard/getTreeData?item_id='+ item_id
+          },
+          'data' : function (node) {
+            return { 'id' : node.id, 'item_id': node.item_id };
+          }
+        },
+      'check_callback': true
+      },
+      "plugins": ["dnd"]
+    });
+  });
+  </script>
+</body>
+</html>
