@@ -39,16 +39,38 @@
       'core' : {
         'data' : {
           'url' : function (node) {
-            var item_id = node.original == null ? '' : node.original.item_id;
+            console.log(node.original);
+            var item_id = typeof(node.original) === 'undefined' ? '' : node.original.item_id;
             return '/admin/dashboard/getTreeData?item_id='+ item_id
           },
           'data' : function (node) {
             return { 'id' : node.id, 'item_id': node.item_id };
           }
         },
-      'check_callback': true
+        'check_callback': function(o, n, p, i, m){
+          if (this.get_node(n).parent === this.get_node(p).id) 
+            return true;
+          else 
+            return false;
+        }
       },
-      "plugins": ["dnd"]
+      "checkbox": {three_state: false, whole_node: false, tie_selection: false},
+      "plugins": ["dnd", "checkbox"]
+    }).bind("move_node.jstree", function (e, data) {
+      if(data.old_parent == data.parent){
+        var parent_node = $("#jstree").jstree(true).get_node(data.parent);
+        console.log(parent_node);
+        console.log(parent_node.original);
+        console.log(parent_node.children);
+        $("#jstree").find("#" + data.parent + " li").each(function(index) {
+          console.log($(this).text());
+        });
+        return true;
+      }else {
+        return false;
+      }
+    }).bind("check_node.jstree uncheck_node.jstree", function(e, data){
+      alert(data.node.id+"--"+data.node.text+(data.node.state.checked?' Checked': ' Not checked'));
     });
   });
   </script>
