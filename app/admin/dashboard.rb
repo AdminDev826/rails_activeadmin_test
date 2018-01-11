@@ -11,27 +11,32 @@ ActiveAdmin.register_page "Dashboard" do
   static_data << {text: "Fifth", checked: false}
 
 
-  page_action :getTreeData, method: :get do
-
-    default_tabs = {
-      aa: ["abcde1","abcde2","abcde3","abcde4","abcde5","abcde6","abcde7","abcde8"],
-      bb: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
-      cc: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
-      dd: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
-      ee: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"],
-      ff: ["abcde","abcde","abcde","abcde","abcde","abcde","abcde","abcde"]
-    }
+  page_action :get_tree_data, method: :get do
+    file = File.read('app/assets/json/tab_data.json')
+    begin
+      default_tabs = MultiJson.load(file)
+    rescue MultiJson::ParseError => exception
+      p exception.data
+      p exception.cause
+    end
 
     return_data = []
     if params[:item_id].present?
-      default_tabs[params[:item_id].to_sym].each do |item|
-        model_key = params[:item_id].humanize.parameterize + '.' + item.singularize.parameterize 
+      default_tabs[params[:item_id]].each do |key, value|
+        model_key = params[:item_id] + '.' + key
+        tree_data = {text: key, state: {checked: true}, children: true, pid: model_key}
+        return_data << tree_data
+      end
+    elsif params[:pid].present?
+      ids = params[:pid].split('.')
+      default_tabs[ids[0]][ids[1]].each do |item|
+        model_key = params[:pid] + '.' + item.singularize.parameterize 
         tree_data = {text: item, state: {checked: true}, children: false, pid: model_key}
         return_data << tree_data
       end
     else
-      default_tabs.each do |key, data|
-        tree_data = { text: key.to_s.humanize, state: {checkbox_disabled: true}, children: true, item_id: key }
+      default_tabs.each do |key, value|
+        tree_data = { text: key.humanize, state: {checkbox_disabled: true}, children: true, item_id: key }
         return_data << tree_data
       end
     end

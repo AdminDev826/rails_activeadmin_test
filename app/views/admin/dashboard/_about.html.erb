@@ -39,16 +39,19 @@
       'core' : {
         'data' : {
           'url' : function (node) {
-            console.log(node.original);
-            var item_id = typeof(node.original) === 'undefined' ? '' : node.original.item_id;
-            return '/admin/dashboard/getTreeData?item_id='+ item_id
-          },
-          'data' : function (node) {
-            return { 'id' : node.id, 'item_id': node.item_id };
+            var url;
+            console.log(node.parent);
+            if(node.parent != '#' && node.parent != null){
+              url = '/admin/dashboard/get_tree_data?pid=' + node.original.pid
+            }else{
+              var item_id = node.original != null ? node.original.item_id : '';
+              url = '/admin/dashboard/get_tree_data?item_id='+ item_id
+            }
+            return url;
           }
         },
         'check_callback': function(o, n, p, i, m){
-          if (this.get_node(n).parent === this.get_node(p).id) 
+          if (this.get_node(n).parent === this.get_node(p).id && this.get_node(n).parents.length > 1) 
             return true;
           else 
             return false;
@@ -57,7 +60,7 @@
       "checkbox": {three_state: false, whole_node: false, tie_selection: false},
       "plugins": ["dnd", "checkbox"]
     }).bind("move_node.jstree", function (e, data) {
-      if(data.old_parent == data.parent){
+      if(data.old_parent === data.parent){
         var parent_node = $("#jstree").jstree(true).get_node(data.parent);
         console.log(parent_node);
         console.log(parent_node.original);
@@ -70,7 +73,9 @@
         return false;
       }
     }).bind("check_node.jstree uncheck_node.jstree", function(e, data){
-      alert(data.node.id+"--"+data.node.text+(data.node.state.checked?' Checked': ' Not checked'));
+      var url = "url?pid=" + data.node.original.pid;
+      console.log(url);
+      // alert(data.node.id+"--"+data.node.text+(data.node.state.checked?' Checked': ' Not checked'));
     });
   });
   </script>
