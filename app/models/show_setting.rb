@@ -1,0 +1,2 @@
+class ShowSetting < ApplicationRecord
+end

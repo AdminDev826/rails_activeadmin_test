@@ -39,6 +39,8 @@ gem 'jquery-rails'
 gem 'bootstrap-toggle-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem "jstree-rails-4"
+gem "jquery_context_menu-rails"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
