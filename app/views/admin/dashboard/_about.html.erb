@@ -4,11 +4,10 @@
   <meta charset="utf-8">
   <title>jsTree test</title>
   <!-- 2 load the theme CSS file -->
-  
 </head>
 <body>
   <!-- 3 setup a container element -->
-  <div id="jstree">
+  <div id="jstree"> 
     <!-- in this example the tree is populated from inline HTML -->
     <ul>
       <li>Root node 1
@@ -20,10 +19,10 @@
       <li>Root node 2</li>
     </ul>
   </div>
-  <button>demo button</button>
-
+  <span class="context-menu-one btn btn-neutral" data-value="sdf">right click me</span>
+  
   <script>
-  $(function () {
+  jQuery(function ($) {
     // 6 create an instance when the DOM is ready
     // $('#jstree').jstree();
     // $('#jstree').jstree({
@@ -34,6 +33,24 @@
     //     }
     //   }
     // });
+    
+    $.contextMenu({
+      selector: ".context-menu-one",
+      trigger: 'left',
+      callback: function(key, options) {
+        console.log($(this).data("value"));
+        var m = "clicked: " + key;
+        window.console && console.log(m) || alert(m); 
+      },
+
+      items: {
+        "edit": {name: "Edit", icon: "add"},
+        "cut": {name: "Beer", icon: "edit"},
+        "copy": {name: "Cloud download", icon: "loading"},
+        "paste": {name: "Certificate", icon: "paste"}
+      }
+    }); 
+
 
     $('#jstree').jstree({
       'core' : {

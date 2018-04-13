@@ -39,7 +39,6 @@ gem 'jquery-rails'
 gem 'bootstrap-toggle-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem "jstree-rails-4"
-gem "jquery_context_menu-rails"
 
 
 group :development, :test do

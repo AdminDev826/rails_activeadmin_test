@@ -2,7 +2,7 @@
 #= require bootstrap-sprockets
 #= require bootstrap-toggle
 #= require jstree
-#= require jquery.contextMenu.js
+#= require context-menu
 
 getDatawithFormat = (url, object_id, user_id, dataType, key, objectItem) -> 
 	$.ajax
@@ -46,6 +46,20 @@ $(document).ready ->
 	data_id = ''
 	user_id = ''
 	tab_selected_item = null
+
+	# $.contextMenu
+	#   selector: '.context-menu-one'
+	#   trigger: 'left',
+	#   callback: (key, options) ->
+	#     console.log $(this).data('value')
+	#     m = 'clicked: ' + key
+	#     window.console and console.log(m) or alert(m)
+	#     return
+	#   items:
+	#     foo: name: 'Foo',icon: 'fa-edit'
+	#     sep: '---------'
+	#     bar: name: 'Bar'
+	    
 
 	$('.tab-setting-row').click ->
 	  tab_selected_item = $(this)
