@@ -2,6 +2,7 @@
 #= require bootstrap-sprockets
 #= require bootstrap-toggle
 #= require jstree
+#= require jquery.contextMenu.js
 
 getDatawithFormat = (url, object_id, user_id, dataType, key, objectItem) -> 
 	$.ajax
