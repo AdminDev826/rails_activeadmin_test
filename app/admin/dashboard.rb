@@ -69,6 +69,20 @@ ActiveAdmin.register_page "Dashboard" do
     end
   end
 
+  page_action :load_jbuilder, method: :get do
+    file = File.open("app/assets/json/show.jbuilder", "rb")
+    contents = file.read
+    file.close
+    data = []
+    contents.split('json.').each do |item|
+      if item.include? ' @'
+        item_key = item.split( ' @').first
+        data << item_key unless item_key == 'id' or item_key == 'options' or item_key == 'read_only_fields'
+      end
+    end
+    render json: {data: data}
+  end
+
   content title: proc{ I18n.t("active_admin.dashboard") } do
     key = params[:title].present? ? params[:title] : "about"
     div class: "blank_slate_container", id: "dashboard_default_message" do

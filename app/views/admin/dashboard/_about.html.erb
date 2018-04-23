@@ -7,6 +7,13 @@
 </head>
 <body>
   <!-- 3 setup a container element -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>
+
+      <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+    </div>
   <div id="jstree"> 
     <!-- in this example the tree is populated from inline HTML -->
     <ul>
@@ -20,7 +27,7 @@
     </ul>
   </div>
   <span class="context-menu-one btn btn-neutral" data-value="sdf">right click me</span>
-  
+
   <script>
   jQuery(function ($) {
     // 6 create an instance when the DOM is ready
@@ -33,6 +40,9 @@
     //     }
     //   }
     // });
+    setTimeout(function(){
+      $('body').addClass('loaded');
+    }, 3000);
     
     $.contextMenu({
       selector: ".context-menu-one",
