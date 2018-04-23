@@ -81,7 +81,13 @@ ActiveAdmin.register_page "Dashboard" do
         data << item_key unless except_data.include? item_key
       end
     end
-    render json: {data: data}
+    render json: {data: data, sm: sm("test")}
+  end
+
+  controller do
+    def sm(data)
+      data += "-----------------"
+    end
   end
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
