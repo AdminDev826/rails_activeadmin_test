@@ -74,10 +74,11 @@ ActiveAdmin.register_page "Dashboard" do
     contents = file.read
     file.close
     data = []
+    except_data = ['options', 'read_only_fields', 'id']
     contents.split('json.').each do |item|
       if item.include? ' @'
         item_key = item.split( ' @').first
-        data << item_key unless item_key == 'id' or item_key == 'options' or item_key == 'read_only_fields'
+        data << item_key unless except_data.include? item_key
       end
     end
     render json: {data: data}
