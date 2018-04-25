@@ -84,6 +84,19 @@ ActiveAdmin.register_page "Dashboard" do
     render json: {data: data, sm: sm("test")}
   end
 
+  page_action :load_jbuilder_1, method: :get do
+    file = File.open("app/assets/json/index.jbuilder", "rb")
+    contents = file.read
+    file.close
+    data = []
+    contents.split("['").each do |item|
+      if item.include? "']"
+        data << item.split("']").first
+      end
+    end
+    render json: data
+  end
+
   controller do
     def sm(data)
       data += "-----------------"
