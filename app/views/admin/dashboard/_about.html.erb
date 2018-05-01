@@ -42,7 +42,7 @@
     // });
     setTimeout(function(){
       $('body').addClass('loaded');
-    }, 3000);
+    }, 30);
     
     $.contextMenu({
       selector: ".context-menu-one",
@@ -63,6 +63,7 @@
 
 
     $('#jstree').jstree({
+      "plugins": ["dnd", "checkbox", "contextmenu"],
       'core' : {
         'data' : {
           'url' : function (node) {
@@ -85,7 +86,110 @@
         }
       },
       "checkbox": {three_state: false, whole_node: false, tie_selection: false},
-      "plugins": ["dnd", "checkbox"]
+      'contextmenu': {
+        'items': function($node) {
+          return {
+            'list_setting': {
+              "icon" : $node.original.m_icon_url,
+              '_class': 'list-setting-menu',
+              'label': 'List Setting',
+              'submenu': {
+                'Enable': {
+                  'icon': '/images/on.png',
+                  'label': 'Enable',
+                  'action': function(obj) {
+                    $node.original.m_icon_url = "/images/on.png";
+                    $('.list-setting-menu a').find("i").css("background-image", "url(/images/on.png)");
+                  }
+                },
+                'Disable': {
+                  'icon': '/images/off.png',
+                  'label': 'Disable',
+                  'action': function(obj) {
+                    $node.original.m_icon_url = "/images/off.png";
+                    $('.list-setting-menu a').find("i").css("background-image", "url(/images/off.png)");
+                  }
+                }
+              },
+              'action': function(obj) {
+                var url;
+                console.log($node.original.pid);
+                $('body').removeClass('loaded');
+                url = '/admin/applications/get_object_fields';
+                getDataForModal(url, page_key, $node.original.pid, user_id);
+              }
+            },
+            'show_setting': {
+              "icon" : $node.original.s_icon_url,
+              '_class': 'show-setting-menu',
+              'label': 'Show Setting',
+              'submenu': {
+                'Enable': {
+                  'icon': '/images/on.png',
+                  'label': 'Enable',
+                  'action': function(obj) {
+                    $node.original.s_icon_url = "/images/on.png";
+                    $('.show-setting-menu a').find("i").css("background-image", "url(/images/on.png)");
+                  }
+                },
+                'Disable': {
+                  'icon': '/images/off.png',
+                  'label': 'Disable',
+                  'action': function(obj) {
+                    $node.original.s_icon_url = "/images/off.png";
+                    $('.show-setting-menu a').find("i").css("background-image", "url(/images/off.png)");
+                  }
+                }
+              },
+              'action': function(obj) {
+                var url;
+                $('body').removeClass('loaded');
+                url = '/admin/applications/get_show_settings';
+                getDataForModal(url, page_key, $node.original.pid, user_id);
+              }
+            },
+            'action': {
+              "icon" : $node.original.a_icon_url,
+              '_class': 'action-setting-menu',
+              'label': 'Action Setting',
+              'separator_after': true,
+              'submenu': {
+                'Enable': {
+                  'label': 'Enable',
+                  'icon': '/images/on.png',
+                  'action': function(obj) {
+                    $node.original.a_icon_url = "/images/on.png";
+                    $('.action-setting-menu a').find("i").css("background-image", "url(/images/on.png)");
+                  }
+                },
+                'Disable': {
+                  'icon': '/images/off.png',
+                  'label': 'Disable',
+                  'action': function(obj) {
+                    $node.original.a_icon_url = "/images/off.png";
+                    $('.action-setting-menu a').find("i").css("background-image", "url(/images/off.png)");
+                  }
+                }
+              },
+              'action': function(obj) {}
+            },
+            'Tab Enable': {
+              'icon': '/images/on.png',
+              'label': 'Enable',
+              'action': function(obj) {
+                $('#jstree').jstree('enable_node', $node);
+              }
+            },
+            'Tab Disable': {
+              'icon': '/images/off.png',
+              'label': 'Disable',
+              'action': function(obj) {
+                $('#jstree').jstree('disable_node', $node);
+              }
+            }
+          };
+        }
+      }
     }).bind("move_node.jstree", function (e, data) {
       if(data.old_parent === data.parent){
         var parent_node = $("#jstree").jstree(true).get_node(data.parent);

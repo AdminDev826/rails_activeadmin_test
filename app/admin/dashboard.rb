@@ -24,19 +24,43 @@ ActiveAdmin.register_page "Dashboard" do
     if params[:item_id].present?
       default_tabs[params[:item_id]].each do |key, value|
         model_key = params[:item_id] + '.' + key
-        tree_data = {text: key, state: {checked: true}, children: true, pid: model_key}
+        tree_data = {
+          text: key, 
+          state: {checked: true}, 
+          children: true, 
+          pid: model_key, 
+          s_icon_url: "/images/on.png", 
+          m_icon_url: "/images/off.png",
+          a_icon_url: "/images/off.png"
+        }
         return_data << tree_data
       end
     elsif params[:pid].present?
       ids = params[:pid].split('.')
       default_tabs[ids[0]][ids[1]].each do |item|
         model_key = params[:pid] + '.' + item.singularize.parameterize 
-        tree_data = {text: item, state: {checked: true}, children: false, pid: model_key}
+        tree_data = {
+          text: item, 
+          state: {checked: true}, 
+          children: false, 
+          pid: model_key, 
+          s_icon_url: "/images/on.png", 
+          m_icon_url: "/images/off.png",
+          a_icon_url: "/images/off.png"
+        }
         return_data << tree_data
       end
     else
       default_tabs.each do |key, value|
-        tree_data = { text: key.humanize, state: {checkbox_disabled: true}, children: true, item_id: key }
+        tree_data = { 
+          text: key.humanize, 
+          state: {checkbox_disabled: true}, 
+          children: true, 
+          item_id: key, 
+          s_icon_url: "/images/on.png", 
+          m_icon_url: "/images/off.png",
+          a_icon_url: "/images/off.png"
+        }
         return_data << tree_data
       end
     end
