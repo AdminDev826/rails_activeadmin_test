@@ -12,6 +12,7 @@ ActiveAdmin.register About do
 #   permitted
 # end
 
+
     index do
         column :option
         column :settings

@@ -121,6 +121,21 @@ ActiveAdmin.register_page "Dashboard" do
     render json: data
   end
 
+  page_action :load_controller, method: :get do
+    file = File.open("app/assets/json/a_controller.rb", "rb")
+    contents = file.read
+    file.close
+
+    data = []
+    contents.split("options << ").each do |item|
+      if item.include? " if authenticate_option"
+        data << eval(item.split(" if authenticate_option")[0])
+      end
+    end
+
+    render json: data
+  end
+
   controller do
     def sm(data)
       data += "-----------------"
