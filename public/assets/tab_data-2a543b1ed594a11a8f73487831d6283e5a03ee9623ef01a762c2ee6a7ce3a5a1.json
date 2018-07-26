@@ -1,0 +1,14 @@
+{
+  "aa" : {
+    "abcde1" : ["asdf1a", "asdf2a"],
+    "abcde2" : ["asdf1aa", "asdf2aa"]
+    },
+  "bb" : {
+    "abcde1" : ["asdf1b", "asdf2b"],
+    "abcde2" : ["asdf1bb", "asdf2bb"]
+    },
+  "cc" : {
+    "abcde1" : ["asdf1c", "asdf2c"],
+    "abcde2" : ["asdf1cc", "asdf2cc"]
+    }
+}
