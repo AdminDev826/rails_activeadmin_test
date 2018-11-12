@@ -1,0 +1,51 @@
+[ N 2018-11-12 00:07:03.3214 12362/T1 age/Wat/WatchdogMain.cpp:1366 ]: Starting Passenger watchdog...
+[ N 2018-11-12 00:07:03.3570 12365/T1 age/Cor/CoreMain.cpp:1310 ]: Starting Passenger core...
+[ N 2018-11-12 00:07:03.3572 12365/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2018-11-12 00:07:03.3657 12365/T1 age/Cor/CoreMain.cpp:985 ]: Passenger core online, PID 12365
+[ N 2018-11-12 00:07:07.7013 12365/Tb age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+
+[ N 2018-11-12 00:07:36.0843 12365/T6 age/Cor/CoreMain.cpp:641 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-11-12 00:07:36.0871 12365/T1 age/Cor/CoreMain.cpp:1216 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-11-12 00:07:36.0871 12365/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 12457, application /home/admindev/Documents/bai/rails_activeadmin_test (development)
+[ N 2018-11-12 00:07:36.0873 12365/T9 Ser/Server.h:902 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2018-11-12 00:07:36.0874 12365/T9 Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2018-11-12 00:07:36.0874 12365/Ta Ser/Server.h:902 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-11-12 00:07:36.0875 12365/Ta Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2018-11-12 00:07:36.0876 12365/T6 Ser/Server.h:902 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2018-11-12 00:07:36.0876 12365/T6 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2018-11-12 00:07:36.0877 12365/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 12457, application /home/admindev/Documents/bai/rails_activeadmin_test (development)
+[ N 2018-11-12 00:07:36.3432 12365/T1 age/Cor/CoreMain.cpp:1295 ]: Passenger core shutdown finished
+[ N 2018-11-12 00:08:01.6165 12607/T1 age/Wat/WatchdogMain.cpp:1366 ]: Starting Passenger watchdog...
+[ N 2018-11-12 00:08:01.6543 12610/T1 age/Cor/CoreMain.cpp:1310 ]: Starting Passenger core...
+[ N 2018-11-12 00:08:01.6545 12610/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2018-11-12 00:08:01.6697 12610/T1 age/Cor/CoreMain.cpp:985 ]: Passenger core online, PID 12610
+[ N 2018-11-12 00:08:05.9799 12610/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+
+[ N 2018-11-12 00:08:16.6045 12610/T8 age/Cor/CoreMain.cpp:641 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-11-12 00:08:16.6045 12610/T1 age/Cor/CoreMain.cpp:1216 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-11-12 00:08:16.6046 12610/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 12695, application /home/admindev/Documents/bai/rails_activeadmin_test (production)
+[ N 2018-11-12 00:08:16.6047 12610/Ta Ser/Server.h:902 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2018-11-12 00:08:16.6048 12610/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2018-11-12 00:08:16.6049 12610/T8 Ser/Server.h:902 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2018-11-12 00:08:16.6050 12610/T8 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2018-11-12 00:08:16.6050 12610/Tc Ser/Server.h:902 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-11-12 00:08:16.6051 12610/Tc Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2018-11-12 00:08:16.6052 12610/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 12695, application /home/admindev/Documents/bai/rails_activeadmin_test (production)
+[ N 2018-11-12 00:08:16.8750 12610/T1 age/Cor/CoreMain.cpp:1295 ]: Passenger core shutdown finished
+[ N 2018-11-12 00:08:18.4530 12765/T1 age/Wat/WatchdogMain.cpp:1366 ]: Starting Passenger watchdog...
+[ N 2018-11-12 00:08:18.4908 12768/T1 age/Cor/CoreMain.cpp:1310 ]: Starting Passenger core...
+[ N 2018-11-12 00:08:18.4909 12768/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2018-11-12 00:08:18.4967 12768/T1 age/Cor/CoreMain.cpp:985 ]: Passenger core online, PID 12768
+[ N 2018-11-12 00:08:22.8449 12768/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+
+[ N 2018-11-12 00:08:41.5333 12768/T8 age/Cor/CoreMain.cpp:641 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-11-12 00:08:41.5333 12768/T1 age/Cor/CoreMain.cpp:1216 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-11-12 00:08:41.5334 12768/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 12851, application /home/admindev/Documents/bai/rails_activeadmin_test (production)
+[ N 2018-11-12 00:08:41.5334 12768/Ta Ser/Server.h:902 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2018-11-12 00:08:41.5335 12768/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2018-11-12 00:08:41.5335 12768/T8 Ser/Server.h:902 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2018-11-12 00:08:41.5335 12768/T8 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2018-11-12 00:08:41.5336 12768/Tc Ser/Server.h:902 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-11-12 00:08:41.5336 12768/Tc Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2018-11-12 00:08:41.5337 12768/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 12851, application /home/admindev/Documents/bai/rails_activeadmin_test (production)
+[ N 2018-11-12 00:08:41.7847 12768/T1 age/Cor/CoreMain.cpp:1295 ]: Passenger core shutdown finished

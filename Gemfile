@@ -39,6 +39,7 @@ gem 'jquery-rails'
 gem 'bootstrap-toggle-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem "jstree-rails-4"
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 
 group :development, :test do
