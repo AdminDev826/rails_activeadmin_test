@@ -83,3 +83,24 @@
 [ N 2018-11-13 21:13:53.1557 5169/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
 [ N 2018-11-13 21:13:53.1566 5169/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 5250, application /home/admindev/Documents/bai/rails_activeadmin_test (development)
 [ N 2018-11-13 21:13:53.4268 5169/T1 age/Cor/CoreMain.cpp:1295 ]: Passenger core shutdown finished
+[ N 2018-11-21 01:23:39.0232 4057/T1 age/Wat/WatchdogMain.cpp:1366 ]: Starting Passenger watchdog...
+[ N 2018-11-21 01:23:39.0685 4060/T1 age/Cor/CoreMain.cpp:1310 ]: Starting Passenger core...
+[ N 2018-11-21 01:23:39.0687 4060/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2018-11-21 01:23:39.1093 4060/T1 age/Cor/CoreMain.cpp:985 ]: Passenger core online, PID 4060
+[ N 2018-11-21 01:23:43.0889 4060/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+
+[ N 2018-11-21 03:35:11.6945 4060/T7 age/Cor/CoreMain.cpp:641 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-11-21 03:35:11.6946 4060/T1 age/Cor/CoreMain.cpp:1216 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-11-21 03:35:11.6946 4060/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 4158, application /home/admindev/Documents/bai/rails_activeadmin_test (development)
+[ N 2018-11-21 03:35:11.6949 4060/T9 Ser/Server.h:902 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2018-11-21 03:35:11.6949 4060/Td Ser/Server.h:902 ]: [ServerThr.4] Freed 0 spare client objects
+[ N 2018-11-21 03:35:11.6949 4060/T9 Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2018-11-21 03:35:11.6949 4060/Td Ser/Server.h:558 ]: [ServerThr.4] Shutdown finished
+[ N 2018-11-21 03:35:11.6950 4060/Tb Ser/Server.h:902 ]: [ServerThr.3] Freed 0 spare client objects
+[ N 2018-11-21 03:35:11.6950 4060/Tb Ser/Server.h:558 ]: [ServerThr.3] Shutdown finished
+[ N 2018-11-21 03:35:11.6951 4060/T7 Ser/Server.h:902 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2018-11-21 03:35:11.6952 4060/T7 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2018-11-21 03:35:11.7176 4060/Tf Ser/Server.h:902 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-11-21 03:35:11.7177 4060/Tf Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2018-11-21 03:35:11.7180 4060/T1 age/Cor/CoreMain.cpp:1117 ]: Checking whether to disconnect long-running connections for process 4158, application /home/admindev/Documents/bai/rails_activeadmin_test (development)
+[ N 2018-11-21 03:35:11.9892 4060/T1 age/Cor/CoreMain.cpp:1295 ]: Passenger core shutdown finished
