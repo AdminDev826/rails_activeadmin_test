@@ -6,4 +6,15 @@ class Product < ApplicationRecord
 	def active(name)
 		self.update_column(:name, name)
 	end
+
+	def destroy
+		check_for_events? ? super : self
+	end
+
+	private
+
+	def check_for_events?
+		errors[:base] << "Cannot delete club while events exist."
+    return false
+	end
 end
